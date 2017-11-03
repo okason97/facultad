@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<div class="container">
+	<div class="form-title">
+		<h2>Login</h2>		
+	</div>
+  	<hr>
+    <form id="login-form" action="?controller=Login&action=login" method="post">
+        <div class="form-group">
+            <h4>Username</h4>
+            <input type="text" name="username" tabindex="1" class="form-input" pattern="[A-Za-z0-9]*" title="El nombre de usuario solo debe contener letras o numeros" required
+                value="{%- if username is defined -%}
+                        	{{- username -}}
+                        {%- endif -%}">
+        </div>
+        <div class="form-group">
+            <h4>Password</h4>
+            <input type="password" name="password" tabindex="2" class="form-input" required
+                value="{%- if password is defined -%}
+                        	{{- password -}}
+                        {%- endif -%}">
+        </div>
+        <div class="form-group">
+            <input type="submit" name="login-submit" class="form-submit" tabindex="3" value="Aceptar">
+        </div>
+    </form>
+</div>
+{% endblock %}

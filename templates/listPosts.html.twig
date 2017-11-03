@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<div class="container">
+    <div>
+        <h2>Posts</h2>
+    </div>
+    <ul>
+    {% for post in posts %}
+        <li class="post">
+            <a href="?controller=Post&action=singleView&postId={{ post.getId }}">{{- post.getTitle -}}</a>
+        </li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}

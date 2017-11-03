@@ -1,0 +1,11 @@
+<nav class="header" style="background: #585858">
+    <a href="?controller=Post&action=basicView" style="display: inline">Home</a>
+    {% if logued %}
+    <a class="header-option" href="?controller=Post&action=create">
+    	Crear nuevo post
+    </a>
+    <a class="header-option" href="?controller=Login&action=logout">
+    	Logout
+    </a>
+    {% endif %}
+</nav>

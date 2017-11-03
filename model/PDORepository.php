@@ -13,10 +13,10 @@
  */
 abstract class PDORepository {
     
-    const USERNAME = "grupo_16";
-    const PASSWORD = "xxxxxx";
+    const USERNAME = "root";
+    const PASSWORD = "pass";
 	const HOST ="localhost";
-	const DB = "grupo_16";
+	const DB = "prueba";
     
     
     private function getConnection(){
@@ -38,5 +38,34 @@ abstract class PDORepository {
         }
         return $list;
     }
+
+    protected function queryFirst($sql, $args, $mapper){
+        $connection = $this->getConnection();
+        $stmt = $connection->prepare($sql);
+        $stmt->execute($args);
+        $element = $stmt->fetch();
+        if (isset($element)) {
+            return $mapper($element);
+        } else {
+            return false;
+        }
+    }
     
+    protected function queryExists($sql, $args){
+        $connection = $this->getConnection();
+        $stmt = $connection->prepare($sql);
+        $stmt->execute($args);
+        $element = $stmt->fetch();
+        if (isset($element)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    protected function queryExecute($sql, $args){
+        $connection = $this->getConnection();
+        $stmt = $connection->prepare($sql);
+        $stmt->execute($args);
+    }
 }
